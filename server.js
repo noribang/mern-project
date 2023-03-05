@@ -6,10 +6,10 @@ const { response } = require('express')
 const app = express()
 
 let db
-// Access ejs templating.
+// Access ejs templating views.
 app.set("view engine", "ejs")
 app.set("views,", "./views")
-// Middleware access public.
+// Middleware access public directory with main.js.
 app.use(express.static("public"))
 
 app.get("/", async (req, res) => {
@@ -25,6 +25,8 @@ app.get("/", async (req, res) => {
 
 app.get("/admin", function(req, res) {
     // res.send("This is the admin page.")
+
+    // admin.ejs calls main.js
     res.render("admin")
 })
 
