@@ -2,12 +2,15 @@
 // Opens connection to db.
 const {MongoClient} = require('mongodb')
 const express = require('express')
+const { response } = require('express')
 const app = express()
 
 let db
-// Middleware
+// Access ejs templating.
 app.set("view engine", "ejs")
 app.set("views,", "./views")
+// Middleware access public.
+app.use(express.static("public"))
 
 app.get("/", async (req, res) => {
     const allAnimals = await db.collection("animals").find().toArray() 
@@ -21,7 +24,8 @@ app.get("/", async (req, res) => {
 })
 
 app.get("/admin", function(req, res) {
-    res.send("This is the admin page.")
+    // res.send("This is the admin page.")
+    res.render("admin")
 })
 
 // Connect to db.
