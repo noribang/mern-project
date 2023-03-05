@@ -1,0 +1,3 @@
+# Ignore all files in any diretory named db
+# This is our Mongodb local db.
+db/

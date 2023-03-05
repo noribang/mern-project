@@ -31,9 +31,9 @@ ctrl + c
 ```
 Install nodemon. Allows you to not have to keep stopping and re-starting server after every change to files.  
 ```bash
-npx nodemon <file_name>
+npm nodemon <file_name>
 e.g.
-npx nodemon main.js
+npm nodemon main.js
 ```
 
 ## CORS package
