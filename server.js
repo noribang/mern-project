@@ -5,6 +5,9 @@ const express = require('express')
 const app = express()
 
 let db
+// Middleware
+app.set("view engine", "ejs")
+app.set("views,", "./views")
 
 app.get("/", async (req, res) => {
     const allAnimals = await db.collection("animals").find().toArray() 

@@ -106,3 +106,9 @@ Start local server.
 ```bash
 npm install mongodb
 ```
+
+## ejs templating engine
+Install.
+```bash
+npm install ejs
+```
