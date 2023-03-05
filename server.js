@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
     // res.send(`<h1>Welcome to the page</h1> ${allAnimals.map(animal => `<p>${animal.name} - ${animal.species}</p>`).join('')}`)
 
     // Render template
-    res.render("home")
+    res.render("home", {allAnimals})
 
 })
 
