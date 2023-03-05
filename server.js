@@ -13,8 +13,10 @@ app.get("/", async (req, res) => {
     const allAnimals = await db.collection("animals").find().toArray() 
     // console.log(allAnimals)
     // res.send("Welcome to the first page.")
-    res.send(`<h1>Welcome to the page</h1> ${allAnimals.map(animal => `<p>${animal.name} - ${animal.species}</p>`).join('')}`)
+    // res.send(`<h1>Welcome to the page</h1> ${allAnimals.map(animal => `<p>${animal.name} - ${animal.species}</p>`).join('')}`)
 
+    // Render template
+    res.render("home")
 
 })
 
