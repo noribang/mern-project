@@ -6,7 +6,9 @@ const app = express()
 
 let db
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+    const allAnimals = await db.collection("animals").find().toArray() 
+    console.log(allAnimals)
     res.send("Welcome to the first page.")
 })
 
