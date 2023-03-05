@@ -1,14 +1,7 @@
-// // Import module.
-// const { application } = require('express')
-// const express = require('express')
-// // Create instance.
-// const app = express()
+// Import mongodb driver module.
+// Opens connection to db.
+const {MongoClient} = require('mongodb')
 
-// app.get("/", (req, res) => {
-//     res.send("Welcome to the")
-// })
-
-// app.listen(4000)
 
 const express = require('express')
 const app = express()

@@ -100,3 +100,9 @@ https://www.mongodb.com/products/compass
 
 Connection string to use in Mongodb Compass
 mongodb://root:root@localhost:27017/
+
+## Install MongoDB driver
+Start local server.
+```bash
+npm install mongodb
+```
