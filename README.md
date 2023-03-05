@@ -59,5 +59,44 @@ app.get('/', (req, res) => {
 
 // Listen localhost 4000
 app.listen(4000)
-
 ```
+
+## MongoDB in Docker container setup
+Start local server.
+```bash
+touch docker-compose.yml
+```
+
+Inside docker-compose.yml
+```bash
+version: "3.9"
+services:
+  mongo:
+    container_name: "mernstackdb"
+    image: mongo:5.0.8-focal
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+```
+
+Command in Bash to install MongoDB image inside Docker container.
+```bash
+docker compose up -d
+```
+
+Start or stop Docker Mongodb.
+```bash
+docker compose stop
+docker compose start
+```
+
+Download GUI client for Mongodb.
+https://www.mongodb.com/products/compass
+
+Connection string to use in Mongodb Compass
+mongodb://root:root@localhost:27017/
