@@ -112,3 +112,9 @@ Install.
 ```bash
 npm install ejs
 ```
+s
+## Install Reactjs 
+Start local server.
+```bash
+npm install react react-dom @babel/core @babel/preset-react babel-loader webpack webpack-cli webpack-node-externals npm-run-all
+```
