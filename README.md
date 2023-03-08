@@ -118,3 +118,11 @@ Start local server.
 ```bash
 npm install react react-dom @babel/core @babel/preset-react babel-loader webpack webpack-cli webpack-node-externals npm-run-all
 ```
+
+## Create web.config.js  
+Create under root directory. Automates and bundles JSX to regular JS.
+```bash
+touch web.config.js
+```
+
+
