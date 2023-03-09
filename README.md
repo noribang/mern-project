@@ -125,4 +125,19 @@ Create under root directory. Automates and bundles JSX to regular JS.
 touch web.config.js
 ```
 
+## Script run local server and webpack
+Script to run both webpack --watch and nodemon server.js
+```javascript
+"scripts": {
+    "dev": "run-p ourserver ourwebpack",
+    "ourwebpack": "webpack --watch",
+    "ourserver": "nodemon server.js",
+    ...}
+```
+
+Script to run both webpack --watch and nodemon server.js
+```bash
+npm run dev
+```
+
 
