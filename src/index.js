@@ -10,6 +10,14 @@ function App() {
     //                 ]
     const [animals, setAnimals] = useState([])    
 
+    useEffect(() => {
+        async function go() {
+            const response = await Axios.get("/api/animals")
+            setAnimals(response.data)
+        }
+        go()
+    }, [])
+
 
     return (
         <div>
