@@ -140,4 +140,9 @@ Run script
 npm run dev
 ```
 
+## Install Axios
+Run script
+```bash
+npm install axios
+```
 
