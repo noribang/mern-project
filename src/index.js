@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {createRoot} from 'react-dom/client'
+import Axios from 'axios'
 
 // Top level App component.
 function App() {
-    // Test json
-    const animals = [{name: "Meowsalot", species: "Cat"}, 
-                     {name: "Barksalot", species: "Dog"}
-                    ]
+    // // Test json
+    // const animals = [{name: "Meowsalot", species: "Cat"}, 
+    //                  {name: "Barksalot", species: "Dog"}
+    //                 ]
+    const [animals, setAnimals] = useState([])    
+
 
     return (
         <div>
