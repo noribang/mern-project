@@ -29,6 +29,15 @@ app.get("/admin", function(req, res) {
     // admin.ejs calls main.js
     res.render("admin")
 })
+// Return json.
+app.get("/api/animals", async (req, res) => {
+    // Returns array of all rows from animals table.
+    const allAnimals = await db.collection("animals").find().toArray()
+    // Return json as response to request.
+    res.json(allAnimals)
+})
+
+
 
 // Connect to db.
 // Async returns Promise.

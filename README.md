@@ -135,7 +135,7 @@ Script to run both webpack --watch and nodemon server.js
     ...}
 ```
 
-Script to run both webpack --watch and nodemon server.js
+Run script
 ```bash
 npm run dev
 ```
