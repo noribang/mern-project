@@ -13,7 +13,10 @@ function App() {
     // On initial page load or hard reload.
     useEffect(() => {
         async function go() {
+            // http request to express server api.
+            // Return json.
             const response = await Axios.get("/api/animals")
+            // Change state.
             setAnimals(response.data)
         }
         go()
