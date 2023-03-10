@@ -10,6 +10,7 @@ function App() {
     //                 ]
     const [animals, setAnimals] = useState([])    
 
+    // On initial page load or hard reload.
     useEffect(() => {
         async function go() {
             const response = await Axios.get("/api/animals")

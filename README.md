@@ -95,6 +95,7 @@ docker compose stop
 docker compose start
 ```
 
+## Install MongoDB client to talk to Docker
 Download GUI client for Mongodb.
 https://www.mongodb.com/products/compass
 
