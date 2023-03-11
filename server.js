@@ -15,10 +15,13 @@ app.use(express.static("public"))
 // Middleware function for very basic password protection.
 function passwordProtected(req, res, next) {
     res.set("WWW-Authenticate", "Basic realm='Our MERN App'")
-    if () {
-
+    // If user typed in correct password call next function.
+    if (req.headers.authorization === "1234") {
+        next();
     } else {
-
+    // Else respond with error message.
+        console.log(req.headers.authorization)
+        res.status(401).send("Try again.")
     }
 }
 
