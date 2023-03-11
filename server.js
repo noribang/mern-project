@@ -16,7 +16,8 @@ app.use(express.static("public"))
 function passwordProtected(req, res, next) {
     res.set("WWW-Authenticate", "Basic realm='Our MERN App'")
     // If user typed in correct password call next function.
-    if (req.headers.authorization === "1234") {
+    // Username: "admin". Password: "admin."
+    if (req.headers.authorization === "Basic YWRtaW46YWRtaW4=") {
         next();
     } else {
     // Else respond with error message.
@@ -24,7 +25,6 @@ function passwordProtected(req, res, next) {
         res.status(401).send("Try again.")
     }
 }
-
 
 app.get("/", async (req, res) => {
     const allAnimals = await db.collection("animals").find().toArray() 
@@ -36,6 +36,10 @@ app.get("/", async (req, res) => {
     res.render("home", {allAnimals})
 
 })
+
+// Use middleware function passwordProtected for all
+// request function below.
+app.use(passwordProtected)
 
 app.get("/admin", function(req, res) {
     // res.send("This is the admin page.")
