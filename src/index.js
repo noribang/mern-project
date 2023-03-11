@@ -26,7 +26,7 @@ function App() {
 
 
     return (
-        <div>
+        <div className="container">
             <h1>Hello</h1>
             <p>Hey, from React...</p>
             {/* Creates new array */}
