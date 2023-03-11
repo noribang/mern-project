@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {createRoot} from 'react-dom/client'
 import Axios from 'axios'
+import CreateNewForm from './components/CreateNewForm'
+import AnimalCard from './components/AnimalCard'
 
 // Top level App component.
 function App() {
@@ -34,10 +36,10 @@ function App() {
         </div>
     )
 }
-// Component
-function AnimalCard(props) {
-    return <p>Hi, my name is {props.name} and I am a {props.species}</p>
-}
+// // Component
+// function AnimalCard(props) {
+//     return <p>Hi, my name is {props.name} and I am a {props.species}</p>
+// }
 
 const root = createRoot(document.querySelector("#app"))
 root.render(<App />)
