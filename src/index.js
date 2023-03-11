@@ -36,7 +36,7 @@ function App() {
             {/* Creates new array */}
             <div className="animal-grid">
                 {animals.map(function(animal) {
-                    return <AnimalCard name={animal.name} species={animal.species} />
+                    return <AnimalCard key={animal._id} name={animal.name} species={animal.species} photo={animal.photo} id={animal._id} setAnimals={setAnimals} />
                 })}
             </div>
         </div>
