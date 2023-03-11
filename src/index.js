@@ -27,7 +27,8 @@ function App() {
 
     return (
         <div className="container">
-            <h1>Hello</h1>
+            {/* <h1>Hello</h1> */}
+            <p><a href="/">&laquo; Back to public homepage</a></p>
             <p>Hey, from React...</p>
             {/* Creates new array */}
             {animals.map(function(animal) {
