@@ -47,6 +47,7 @@ app.get("/admin", function(req, res) {
     // admin.ejs calls main.js
     res.render("admin")
 })
+// GET api call.
 // Return json.
 app.get("/api/animals", async (req, res) => {
     // Returns array of all rows from animals table.
@@ -54,7 +55,11 @@ app.get("/api/animals", async (req, res) => {
     // Return json as response to request.
     res.json(allAnimals)
 })
-
+// POST 
+app.post("create-animal", async (req, res) => {
+    console.log(req.body)
+    res.send("Thank you.")
+})
 
 
 // Connect to db.
