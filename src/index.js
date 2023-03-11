@@ -10,6 +10,8 @@ function App() {
     // const animals = [{name: "Meowsalot", species: "Cat"}, 
     //                  {name: "Barksalot", species: "Dog"}
     //                 ]
+
+    // State for animals json
     const [animals, setAnimals] = useState([])    
 
     // On initial page load or hard reload.
@@ -28,12 +30,15 @@ function App() {
     return (
         <div className="container">
             {/* <h1>Hello</h1> */}
-            <p><a href="/">&laquo; Back to public homepage</a></p>
             <p>Hey, from React...</p>
+            <p><a href="/">&laquo; Back to public homepage</a></p>
+            <CreateNewForm setAnimals={setAnimals}/>
             {/* Creates new array */}
-            {animals.map(function(animal) {
-                return <AnimalCard name={animal.name} species={animal.species} />
-            })}
+            <div className="animal-grid">
+                {animals.map(function(animal) {
+                    return <AnimalCard name={animal.name} species={animal.species} />
+                })}
+            </div>
         </div>
     )
 }
