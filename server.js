@@ -12,10 +12,16 @@ app.set("views,", "./views")
 // Middleware access public directory with main.js.
 app.use(express.static("public"))
 
-// Middleware function for password protection.
+// Middleware function for very basic password protection.
 function passwordProtected(req, res, next) {
     res.set("WWW-Authenticate", "Basic realm='Our MERN App'")
+    if () {
+
+    } else {
+
+    }
 }
+
 
 app.get("/", async (req, res) => {
     const allAnimals = await db.collection("animals").find().toArray() 
