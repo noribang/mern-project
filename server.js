@@ -71,7 +71,7 @@ app.get("/api/animals", async (req, res) => {
 // CREATE:
 // POST request from CreateNewForm component. 
 // Upload (multer) used to upload file.
-app.post("/create-animal", upload.single("photo"), async (req, res) => {
+app.post("/create-animal", upload.single("photo"), ourCleanup, async (req, res) => {
     console.log(req.body)
     res.send("Thank you.")
 })
