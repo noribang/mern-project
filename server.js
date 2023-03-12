@@ -73,7 +73,13 @@ app.post("/create-animal", upload.single("photo"), async (req, res) => {
     console.log(req.body)
     res.send("Thank you.")
 })
-
+// Middleware function to prevent js object injection in request.
+function ourCleanup(req, res, next) {
+    // If request body not string return empty string as precaution.
+    if (typeof req.body.name != "string") req.body.name = ""
+    if (typeof req.body.species != "string") req.body.species = ""
+    if (typeof req.body._id != "string") req.body._id = ""
+}
 
 // Connect to db.
 // Async returns Promise.
