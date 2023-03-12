@@ -147,3 +147,8 @@ Run script
 npm install axios
 ```
 
+## Install multer to upload files
+Run script
+```bash
+npm install multer
+```

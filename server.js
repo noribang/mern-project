@@ -9,8 +9,12 @@ let db
 // Access ejs templating views.
 app.set("view engine", "ejs")
 app.set("views,", "./views")
-// Middleware access public directory with main.js.
+// Using Middleware to access public directory with main.js.
 app.use(express.static("public"))
+// Using middleware to access json data sent from browser.
+app.use(express.json())
+// Using middleware to access html form data sent from browser.
+app.use(express.urlencoded({extended: false}))
 
 // Middleware function for very basic password protection.
 function passwordProtected(req, res, next) {
@@ -41,12 +45,15 @@ app.get("/", async (req, res) => {
 // request function below.
 app.use(passwordProtected)
 
+// READ:
+// GET
 app.get("/admin", function(req, res) {
     // res.send("This is the admin page.")
 
     // admin.ejs calls main.js
     res.render("admin")
 })
+// READ:
 // GET api call.
 // Return json.
 app.get("/api/animals", async (req, res) => {
@@ -55,7 +62,8 @@ app.get("/api/animals", async (req, res) => {
     // Return json as response to request.
     res.json(allAnimals)
 })
-// POST 
+// CREATE:
+// POST request from CreateNewForm component. 
 app.post("create-animal", async (req, res) => {
     console.log(req.body)
     res.send("Thank you.")
