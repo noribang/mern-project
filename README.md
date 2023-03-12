@@ -159,3 +159,16 @@ Run script
 npm install sanitize-html
 ```
 
+## Install package to deal with files and folders in node
+Run script
+```bash
+npm install fs-extra
+```
+
+## Install package to manipulate images
+Run script
+```bash
+npm install sharp
+```
+
+
