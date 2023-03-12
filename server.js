@@ -10,8 +10,17 @@ const multer = require('multer')
 const upload = multer()
 // Sanitize html injection.
 const sanitizeHTML = require('sanitize-html')
-
+// File and folder package
+const fse = require('fs-extra')
+// Image manipulation.
+const sharp = require('sharp') 
 let db
+// From node import path package.
+const path = require('path')
+
+// When app first lauches, make sure public/uploaded-photos folder exists.
+fse.ensureDirSync(path.join("public", "uploaded-photos")) 
+
 // Access ejs templating views.
 app.set("view engine", "ejs")
 app.set("views,", "./views")
@@ -72,6 +81,16 @@ app.get("/api/animals", async (req, res) => {
 // POST request from CreateNewForm component. 
 // Upload (multer) used to upload file.
 app.post("/create-animal", upload.single("photo"), ourCleanup, async (req, res) => {
+    // Process incoming photo.
+    // console.log(req.file)
+    if(req.file) {
+        // Give file a name.
+        const photofilename = `${Date.now()}.jpg`
+        // Resize image
+        await sharp(req.file.buffer).resize(844, 456).jpeg({quality: 60}).toFile(path.join("public", "uploaded-photos", photofilename))
+        req.cleanData.photo = photofilename
+    }
+        
     console.log(req.body)
     // Talk to db.
     const info = await db.collection("animals").insertOne(req.cleanData)
