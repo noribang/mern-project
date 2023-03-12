@@ -1,6 +1,6 @@
 // Import mongodb driver module.
 // Opens connection to db.
-const {MongoClient} = require('mongodb')
+const {MongoClient, ObjectId} = require('mongodb')
 const express = require('express')
 const { response } = require('express')
 const app = express()
@@ -73,7 +73,13 @@ app.get("/api/animals", async (req, res) => {
 // Upload (multer) used to upload file.
 app.post("/create-animal", upload.single("photo"), ourCleanup, async (req, res) => {
     console.log(req.body)
-    res.send("Thank you.")
+    // Talk to db.
+    const info = await db.collection("animals").insertOne(req.cleanData)
+    const newAnimal = await db.collection("animals").findOne({_id: new ObjectId(info.insertedId)})
+    // res.send("Thank you.")
+
+    // Respond with new animal posted to db.
+    res.send(newAnimal)
 })
 // Middleware function to prevent js object injection in request.
 function ourCleanup(req, res, next) {
