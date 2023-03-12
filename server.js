@@ -8,6 +8,8 @@ const app = express()
 const multer = require('multer')
 // Create multer instance.
 const upload = multer()
+// Sanitize html injection.
+const sanitizeHTML = require('sanitize-html')
 
 let db
 // Access ejs templating views.
@@ -75,10 +77,19 @@ app.post("/create-animal", upload.single("photo"), async (req, res) => {
 })
 // Middleware function to prevent js object injection in request.
 function ourCleanup(req, res, next) {
+    // Prevent js object injection in request.
     // If request body not string return empty string as precaution.
     if (typeof req.body.name != "string") req.body.name = ""
     if (typeof req.body.species != "string") req.body.species = ""
     if (typeof req.body._id != "string") req.body._id = ""
+
+    // Prevent html injection.
+    req.cleanData = {
+        name: sanitizeHTML(req.body.name.trim(), {allowedTags: [], allowedAttributes: {}}),
+        species: sanitizeHTML(req.body.species.trim(), {allowedTags: [], allowedAttributes: {}})
+    }
+
+    next()
 }
 
 // Connect to db.
