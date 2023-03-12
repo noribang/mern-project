@@ -4,6 +4,10 @@ const {MongoClient} = require('mongodb')
 const express = require('express')
 const { response } = require('express')
 const app = express()
+// Used to upload files.
+const multer = require('multer')
+// Create multer instance.
+const upload = multer()
 
 let db
 // Access ejs templating views.
@@ -64,7 +68,7 @@ app.get("/api/animals", async (req, res) => {
 })
 // CREATE:
 // POST request from CreateNewForm component. 
-app.post("create-animal", async (req, res) => {
+app.post("create-animal", upload.single("photo"), async (req, res) => {
     console.log(req.body)
     res.send("Thank you.")
 })
