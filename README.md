@@ -152,3 +152,10 @@ Run script
 ```bash
 npm install multer
 ```
+
+## Install sanitize HTML package
+Run script
+```bash
+npm install sanitize-html
+```
+
