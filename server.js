@@ -100,6 +100,12 @@ app.post("/create-animal", upload.single("photo"), ourCleanup, async (req, res) 
     // Respond with new animal posted to db.
     res.send(newAnimal)
 })
+// DELETE:
+// DELETE request from AnimalCard.
+app.delete("/animal/:id", async () => {req, res})
+
+
+
 // Middleware function to prevent js object injection in request.
 function ourCleanup(req, res, next) {
     // Prevent js object injection in request.
