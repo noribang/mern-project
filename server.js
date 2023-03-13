@@ -102,7 +102,19 @@ app.post("/create-animal", upload.single("photo"), ourCleanup, async (req, res) 
 })
 // DELETE:
 // DELETE request from AnimalCard.
-app.delete("/animal/:id", async () => {req, res})
+app.delete("/animal/:id", async (req, res) => {
+    // Protect db from injection attack.
+    if (typeof req.params.id != "string") req.params.id = ""
+    // Talk to db to delete image.
+    const doc = await db.collection("animals").findOne({_id: new ObjectId(req.params.id)})
+    if (doc.photo) {
+        fse.remove(path.join("public", "uploaded-photos", doc.photo))
+    }
+    // Talk to db.
+    db.collection("animals").deleteOne({_id: new ObjectId(req.params.id)})
+    // Response.
+    res.send("Good job")
+})
 
 
 
