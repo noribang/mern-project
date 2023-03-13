@@ -115,7 +115,11 @@ app.delete("/animal/:id", async (req, res) => {
     // Response.
     res.send("Good job")
 })
-
+// UPDATE:
+// POST request.
+app.post("/update-animal", upload.single("photo"), ourCleanup, async (req, res) => {
+    
+})
 
 
 // Middleware function to prevent js object injection in request.
