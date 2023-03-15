@@ -58,8 +58,18 @@ app.get("/", async (req, res) => {
     // res.send("Welcome to the first page.")
     // res.send(`<h1>Welcome to the page</h1> ${allAnimals.map(animal => `<p>${animal.name} - ${animal.species}</p>`).join('')}`)
 
+    // Render React animalcard component.
+    const generatedHTML = ReactDOMServer.renderToString(
+        <div className="container">
+            <div className="animal-grid mb-3">
+                {allAnimals.map(animal => <AnimalCard key={animal._id} name={animal.name} species={animal.species} photo={animal.photo} id={animal._id} readOnly={true} />)}
+            </div>
+            <p><a href="/admin">Login / Manage the animal listings.</a></p>
+        </div>
+    )
     // Render template
-    res.render("home", {allAnimals})
+    // res.render("home", {allAnimals})
+    res.render("home", {generatedHTML})
 
 })
 
