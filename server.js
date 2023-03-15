@@ -17,6 +17,13 @@ const sharp = require('sharp')
 let db
 // From node import path package.
 const path = require('path')
+/* Server can render React animalcard component for '/' route. */
+// React
+const React = require('react')
+const ReactDOMServer = require('react-dom/server')
+const AnimalCard = require('./src/components/AnimalCard').default
+
+
 
 // When app first lauches, make sure public/uploaded-photos folder exists.
 fse.ensureDirSync(path.join("public", "uploaded-photos")) 
