@@ -171,4 +171,12 @@ Run script
 npm install sharp
 ```
 
+## Update script running local server and webpack
+Script to run both webpack --watch and nodemon server.js
+```javascript
+"scripts": {
+    ...,
+    "ourserver": "nodemon server-compiled.js",
+    ...}
+```
 
