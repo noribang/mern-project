@@ -61,6 +61,8 @@ app.get("/", async (req, res) => {
     // Render React animalcard component.
     const generatedHTML = ReactDOMServer.renderToString(
         <div className="container">
+            {/* If no cards on page yet. */}
+            {!allAnimals.length && <p>There are no animals yet, the admin needs to add a few.</p>}
             <div className="animal-grid mb-3">
                 {allAnimals.map(animal => <AnimalCard key={animal._id} name={animal.name} species={animal.species} photo={animal.photo} id={animal._id} readOnly={true} />)}
             </div>
